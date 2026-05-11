@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slovenské Zdravie - Ranný zvyk s medom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #e8a84c;
+            --dark-gold: #c4872e;
+            --dark-bg: #1a1a1a;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            color: var(--dark-bg);
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 0 20px;
+        }
+
+        /* Topbar */
+        .topbar {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--primary-gold);
+        }
+
+        .nav-links {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #888;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Article Section */
+        .article-header {
+            padding: 20px 0;
+        }
+
+        .category-pill {
+            display: inline-block;
+            background-color: var(--primary-gold);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .meta-info {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .lead-paragraph {
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 20px;
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .img-container {
+            margin: 25px 0;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            border: 3px dashed var(--primary-gold);
+            display: block;
+            cursor: pointer;
+        }
+
+        /* CTA Blocks */
+        .cta-block {
+            margin: 35px 0;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+        }
+
+        .cta-dark {
+            background-color: var(--dark-bg);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 35px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+
+        .btn-black {
+            background-color: var(--dark-bg);
+            color: var(--white);
+        }
+
+        .btn-gold {
+            background-color: var(--primary-gold);
+            color: var(--dark-bg);
+        }
+
+        .cta-subtitle {
+            font-size: 0.9rem;
+            color: rgba(0,0,0,0.7);
+        }
+
+        .cta-dark .cta-subtitle {
+            color: #ccc;
+        }
+
+        /* Body Text */
+        .body-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        /* Question Banner */
+        .question-banner {
+            border: 2px solid var(--primary-gold);
+            padding: 25px;
+            margin: 30px 0;
+            background-color: #fffdf5;
+            text-align: center;
+        }
+
+        /* FAQ Accordion */
+        .faq-section {
+            margin: 40px 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 10px;
+            color: #666;
+        }
+
+        /* Testimonial */
+        .testimonial-block {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 40px 0;
+            background: #fdfdfd;
+            padding: 20px;
+            border: 1px solid #eee;
+        }
+
+        .testimonial-img {
+            flex: 0 0 150px;
+        }
+
+        .testimonial-img img {
+            width: 100%;
+            border: 3px dashed var(--primary-gold);
+        }
+
+        .testimonial-content blockquote {
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        .testimonial-author {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Highlight Block */
+        .highlight-block {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .highlight-block i {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #777;
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            text-align: justify;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f4f4f4;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .company-info-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: white;
+            text-align: left;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: #666;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .testimonial-block {
+                flex-direction: column;
+                text-align: center;
+            }
+            .testimonial-img {
+                flex: 0 0 auto;
+                width: 120px;
+                margin: 0 auto;
+            }
+            .cta-button {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="container">
+            <div class="logo">Slovenské <span>Zdravie</span></div>
+            <div class="nav-links">
+                <a href="#">Domov</a>
+                <a href="#">Články</a>
+                <a href="#">O nás</a>
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="breadcrumb">
+            Domov > Zdravie > Prírodné Tradície
+        </div>
+
+        <article class="article-header">
+            <span class="category-pill">Tradičné Zdravie</span>
+            <h1>Prečo celé Slovensko hovorí o tomto rannom zvyku s medom?</h1>
+            
+            <div class="meta-info">
+                Publikované: <span id="current-date"></span> | Čas čítania: 4 minúty
+            </div>
+
+            <div class="lead-paragraph">
+                "Môj starý otec mal 94 rokov a do posledného dňa si pamätal mená všetkých svojich pravnúčat. Každé ráno robil jednu vec, ktorú ma naučil, keď som mal desať rokov," hovorí 71-ročný včelár z Liptova.
+            </div>
+
+            <div class="img-container">
+                <a href="https://lp.hypeprospace.shop/preclick">
+                    <img src="img/honey_hero.jpg" alt="Zlatý med">
+                </a>
+            </div>
+
+            <div class="cta-block cta-gradient">
+                <a href="https://lp.hypeprospace.shop/preclick" class="cta-button btn-black">KLIKNITE TU A POZRITE SI VIDEO →</a>
+                <div class="cta-subtitle">Bezplatný informačný obsah · Bez registrácie</div>
+            </div>
+
+            <div class="body-text">
+                <p>Mnohí z nás to poznajú – vojdete do miestnosti a zabudnete, po čo ste prišli. Alebo si neviete spomenúť na meno starého známeho, ktorého ste práve stretli na ulici. Často to pripisujeme veku, ale čo ak existuje spôsob, ako si udržať bystrú myseľ pomocou darov našej prírody?</p>
+                
+                <p>Starý včelár, ktorý zasvätil svoj život práci s včelami, zdieľa príbeh o rannom recepte, ktorý sa v ich rodine dedí po generácie. Nejde o žiadne zložité postupy, ale o správnu kombináciu čistého medu a niekoľkých bežných ingrediencií, ktoré má každý z nás v kuchyni. Kľúčom nie je len to, čo jete, ale kedy a v akom poradí to pripravujete.</p>
+
+                <p>Tento tradičný prístup sa zameriava na to, ako určité prírodné zložky v mede môžu podporiť celkovú vitalitu organizmu. Keď sa med zmieša so správnymi prvkami v presnom pomere, vzniká ranný nápoj, ktorý včelári považujú za základ svojej dlhovekosti a jasného uvažovania aj v pokročilom veku.</p>
+            </div>
+
+            <div class="question-banner">
+                <h3>Zaujíma vás, ktoré 4 bežné ingrediencie pridávajú včelári do svojho ranného medu?</h3>
+            </div>
+
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">Ktorá prírodná látka v mede zaujala výskumníkov? <span>+</span></div>
+                    <div class="faq-answer">Med obsahuje komplexné antioxidanty a enzýmy, ktoré v kombinácii s inými prírodnými zložkami vytvárajú synergický efekt pre podporu organizmu.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Ktoré 4 bežné ingrediencie treba pridať? <span>+</span></div>
+                    <div class="faq-answer">Ide o kombináciu korenín a rastlinných extraktov, ktoré sa bežne nachádzajú v slovenských domácnostiach a tradične sa spájajú s vitalitou.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Prečo záleží na poradí miešania? <span>+</span></div>
+                    <div class="faq-answer">Správne poradie zabezpečuje, že sa aktívne látky v mede neznehodnotia a lepšie sa spoja s ostatnými prísadami pre maximálnu využiteľnosť.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Prečo sa musí piť ráno nalačno? <span>+</span></div>
+                    <div class="faq-answer">Ranná konzumácia nalačno umožňuje telu efektívnejšie vstrebať všetky živiny bez toho, aby bol proces trávenia spomalený inou potravou.</div>
+                </div>
+            </div>
+
+            <div class="testimonial-block">
+                <div class="testimonial-img">
+                    <a href="https://lp.hypeprospace.shop/preclick">
+                        <img src="img/honey_comb.jpg" alt="Plást medu">
+                    </a>
+                </div>
+                <div class="testimonial-content">
+                    <blockquote>"Tento ranný rituál som začal praktizovať pred tromi mesiacmi. Cítim sa oveľa viac sústredený a mám pocit, že moja myseľ je jasnejšia ako kedykoľvek predtým. Je to jednoduché a chutné."</blockquote>
+                    <div class="testimonial-author">Novák Ján, 71 rokov, Bratislava</div>
+                </div>
+            </div>
+
+            <div class="highlight-block">
+                <i>"Príroda nám dáva všetko, čo potrebujeme, stačí len vedieť, ako to správne použiť. Moja pamäť je mojím najväčším pokladom."</i>
+            </div>
+
+            <div class="cta-block cta-dark">
+                <a href="https://lp.hypeprospace.shop/preclick" class="cta-button btn-gold">POZRITE SI VIDEO TERAZ →</a>
+                <div class="cta-subtitle">Bezplatný informačný obsah · Bez registrácie</div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Dôležité upozornenie:</strong> Informácie uvedené na tejto stránke majú výhradne informatívny a vzdelávací charakter. Obsah nie je určený ako náhrada za odbornú lekársku pomoc, diagnostiku alebo liečbu. Tento produkt nie je liek a nie je určený na diagnostiku, liečbu, vyliečenie alebo prevenciu akejkoľvek choroby. Výsledky sa môžu u jednotlivcov líšiť. Nikdy nezanedbávajte odbornú lekársku radu ani neodkladajte jej vyhľadanie kvôli niečomu, čo ste si prečítali na tejto webovej stránke. Prevádzkovateľ stránky: Slovenská Prírodná Vitalita s.r.o., CNPJ: 64.894.325/0001-48.
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="company-info-box">
+                <strong>Slovenská Prírodná Vitalita s.r.o.</strong><br>
+                CNPJ: 64.894.325/0001-48<br>
+                Adresa: Obchodná 12, 811 06 Bratislava, Slovensko<br>
+                Email: info@slovenska-vitalita.sk<br>
+                Činnosť: Online informačné služby a vydavateľstvo obsahu<br>
+                Zodpovedná osoba: Dr. Jana Kováčová
+            </div>
+            <p>&copy; 2024 Slovenské Zdravie. Všetky práva vyhradené.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Zásady ochrany osobných údajov</a> | 
+                <a href="terms.html">Podmienky používania</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamic Date
+        const dateElement = document.getElementById('current-date');
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = new Date().toLocaleDateString('sk-SK', options);
+
+        // UTM Passthrough
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.toString()) {
+                document.querySelectorAll('a').forEach(link => {
+                    const url = new URL(link.href);
+                    if (url.hostname === window.location.hostname || url.hostname === 'google.com') {
+                        urlParams.forEach((value, key) => {
+                            url.searchParams.set(key, value);
+                        });
+                        link.href = url.toString();
+                    }
+                });
+            }
+        })();
+    </script>
+    <script type="text/javascript" src="https://lp.hypeprospace.shop/pretrack.js?rtkcmpid=6a012e765a83c82f07687a98"></script>
+</body>
+</html>
